@@ -6,7 +6,10 @@ Based on 50,000 users/day, assuming an average of 10 queries per user spread acr
 - **Average QPS**: $\approx 6$ queries per second (QPS).
 - **Peak QPS**: $\approx 30$ to 50 queries per second (QPS) during high-concurrency windows.
 
+![Production Architecture Diagram](production_architecture.png)
+
 ---
+
 
 ## 1. API & Load Balancing Layer
 
