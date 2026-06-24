@@ -1,0 +1,21 @@
+# Python caching and virtual env
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+venv/
+.venv/
+.env
+
+# Local Databases and Indices
+data/chroma/
+data/logs.db
+data/documents/
+*.db
+*.log
+
+# IDEs and OS files
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
