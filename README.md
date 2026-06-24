@@ -4,7 +4,12 @@ DocuMind AI is a production-quality, context-aware Retrieval-Augmented Generatio
 
 To provide robust results beyond semantic search, it implements a **Hybrid Retrieval** pipeline (Dense BGE-small embeddings + Sparse BM25 lexical search) combined using **Reciprocal Rank Fusion (RRF)**.
 
+## System Architecture
+
+![System Architecture Diagram](docs/system_architecture.png)
+
 ---
+
 
 ## Key Features
 - 🚀 **REST API**: Built with FastAPI. Interactive Swagger documentation at `/docs`.
