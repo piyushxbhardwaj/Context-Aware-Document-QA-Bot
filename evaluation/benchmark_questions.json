@@ -1,0 +1,22 @@
+[
+  {
+    "question": "Which plan includes API access?",
+    "expected_source": "pricing.txt"
+  },
+  {
+    "question": "What is the cancellation policy?",
+    "expected_source": "pricing.txt"
+  },
+  {
+    "question": "How do I install dependencies for the project?",
+    "expected_source": "setup.md"
+  },
+  {
+    "question": "What is the SLA for the Enterprise plan support?",
+    "expected_source": "pricing.txt"
+  },
+  {
+    "question": "How do I run the server locally?",
+    "expected_source": "setup.md"
+  }
+]
