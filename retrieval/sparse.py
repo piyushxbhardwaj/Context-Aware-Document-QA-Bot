@@ -20,6 +20,9 @@ class BM25Retriever:
 
     def _build_index(self):
         """Constructs the BM25 index over the current corpus."""
+        if not self.documents:
+            self.bm25 = None
+            return
         tokenized_corpus = [self._tokenize(doc.page_content) for doc in self.documents]
         self.bm25 = BM25Okapi(tokenized_corpus)
 

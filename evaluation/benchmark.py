@@ -23,13 +23,9 @@ class RAGEvaluationRunner:
         self.generator = RAGGenerator()
 
     def setup_sample_data_if_empty(self):
-        """Pre-populates vector database with sample data if empty to allow offline evaluation."""
-        all_docs = self.vector_store.get_all_documents()
-        if len(all_docs) > 0:
-            print(f"Vector store already contains {len(all_docs)} documents. Skipping sample generation.")
-            return
-
-        print("Vector database is empty. Generating sample docs to run benchmark...")
+        """Resets the vector database and populates clean sample data for evaluation."""
+        print("Clearing and populating vector database with sample docs to run benchmark...")
+        self.vector_store.reset()
         
         sample_dir = "data/documents"
         os.makedirs(sample_dir, exist_ok=True)

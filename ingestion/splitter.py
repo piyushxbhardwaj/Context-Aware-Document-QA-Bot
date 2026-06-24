@@ -95,14 +95,23 @@ class RecursiveCharacterTextSplitter:
                 overlapped_chunks.append(chunk)
             else:
                 prev_chunk = chunks[i - 1]
-                overlap_text = prev_chunk[-self.chunk_overlap:]
+                # Calculate maximum allowed overlap characters so the combined chunk doesn't exceed self.chunk_size
+                max_allowed_overlap = self.chunk_size - len(chunk) - 1
+                effective_overlap = min(self.chunk_overlap, max_allowed_overlap)
                 
-                # Align overlap at word boundary if possible
-                if " " in overlap_text:
-                    space_idx = overlap_text.find(" ")
-                    overlap_text = overlap_text[space_idx + 1:]
-                
-                overlapped_chunks.append(overlap_text + " " + chunk)
+                if effective_overlap > 0:
+                    overlap_text = prev_chunk[-effective_overlap:]
+                    # Align at word boundary if possible
+                    if " " in overlap_text:
+                        space_idx = overlap_text.find(" ")
+                        overlap_text = overlap_text[space_idx + 1:]
+                    
+                    if overlap_text.strip():
+                        overlapped_chunks.append(overlap_text + " " + chunk)
+                    else:
+                        overlapped_chunks.append(chunk)
+                else:
+                    overlapped_chunks.append(chunk)
         
         return overlapped_chunks
 

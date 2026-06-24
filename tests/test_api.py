@@ -1,8 +1,16 @@
 import pytest
 from fastapi.testclient import TestClient
 from api.main import app
+from api.routes import get_vector_store
 
 client = TestClient(app)
+
+@pytest.fixture(autouse=True)
+def clean_db():
+    get_vector_store().reset()
+    yield
+
+
 
 def test_health_endpoint():
     response = client.get("/health")
