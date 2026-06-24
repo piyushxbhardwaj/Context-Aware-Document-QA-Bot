@@ -6,7 +6,7 @@ To provide robust results beyond semantic search, it implements a **Hybrid Retri
 
 ## System Architecture
 
-![System Architecture Diagram](docs/system_architecture.png?v=2)
+![System Architecture Diagram](docs/system_architecture_v2.png)
 
 ---
 
