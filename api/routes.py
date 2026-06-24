@@ -22,25 +22,49 @@ _generator = None
 def get_embeddings():
     global _embeddings
     if _embeddings is None:
-        _embeddings = HuggingFaceBGEEmbeddings()
+        try:
+            _embeddings = HuggingFaceBGEEmbeddings()
+        except Exception as e:
+            raise HTTPException(
+                status_code=500,
+                detail=f"Embedding model initialization failed: {e}. Check HuggingFace hub connection or local cache."
+            )
     return _embeddings
 
 def get_vector_store():
     global _vector_store
     if _vector_store is None:
-        _vector_store = ChromaVectorStore(get_embeddings())
+        try:
+            _vector_store = ChromaVectorStore(get_embeddings())
+        except Exception as e:
+            raise HTTPException(
+                status_code=500,
+                detail=f"Vector database initialization failed: {e}. Check storage write permissions or directory path."
+            )
     return _vector_store
 
 def get_retriever():
     global _retriever
     if _retriever is None:
-        _retriever = HybridRetriever(get_vector_store())
+        try:
+            _retriever = HybridRetriever(get_vector_store())
+        except Exception as e:
+            raise HTTPException(
+                status_code=500,
+                detail=f"Hybrid retriever orchestration initialization failed: {e}."
+            )
     return _retriever
 
 def get_generator():
     global _generator
     if _generator is None:
-        _generator = RAGGenerator()
+        try:
+            _generator = RAGGenerator()
+        except Exception as e:
+            raise HTTPException(
+                status_code=500,
+                detail=f"LLM text generation manager initialization failed: {e}."
+            )
     return _generator
 
 @router.get("/health", response_model=HealthResponse)
