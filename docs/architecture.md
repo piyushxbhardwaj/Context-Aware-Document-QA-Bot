@@ -6,7 +6,7 @@ DocuMind AI is built using clean, modular architecture principles. The system de
 
 The diagram below shows the end-to-end data flow for both **Document Ingestion** and **Hybrid Retrieval Q&A Queries**:
 
-![System Architecture Diagram](system_architecture.png)
+![System Architecture Diagram](system_architecture.png?v=2)
 
 ```mermaid
 graph TD
