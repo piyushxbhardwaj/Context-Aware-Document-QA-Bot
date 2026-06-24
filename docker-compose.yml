@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  documind-api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: documind-rag-api
+    ports:
+      - "8000:8000"
+    volumes:
+      # Persist Chroma index, SQLite logs, and model cache on the host machine
+      - ./data:/app/data
+    env_file:
+      - .env
+    restart: unless-stopped
+    environment:
+      - HOST=0.0.0.0
+      - PORT=8000
