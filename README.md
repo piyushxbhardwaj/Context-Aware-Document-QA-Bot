@@ -153,6 +153,24 @@ This will:
 
 ---
 
+## ByteVox Nexus AI Evaluation Results
+A final evaluation was conducted on the **ByteVox sample corpus** consisting of 8 technical documents (including API reference, architecture, troubleshooting, and SDK guide) to demonstrate the performance of the Hybrid RAG pipeline.
+
+### Performance Summary
+* **Documents Ingested**: 8 documents split into **193 text chunks**
+* **Benchmark Questions**: 23 queries covering all 8 document categories
+* **Retrieval Hit Rate (Accuracy @ K=5)**: **91.3%**
+* **Average Response Latency**: **68.6 ms** (with local MockLLM fallback)
+* **Hallucination Prevention Rate**: **100%** (10/10 out-of-scope queries successfully refused with *"This information is not available in the provided documents."*)
+
+### Generated Reports
+Detailed reports generated during the evaluation are available at:
+1. [BYTEVOX_RESULTS_SUMMARY.md](BYTEVOX_RESULTS_SUMMARY.md) – Executive dashboard summarizing key system strengths and areas for improvement.
+2. [BYTEVOX_EVALUATION_REPORT.md](BYTEVOX_EVALUATION_REPORT.md) – Full benchmark details table, dense vs. sparse performance comparisons, and failure analysis.
+3. [BYTEVOX_INTERVIEW_PREP.md](BYTEVOX_INTERVIEW_PREP.md) – Expected engineering interview questions, design trade-offs, and architecture explanations.
+
+---
+
 ## Running Automated Tests
 Execute the pytest suite to verify document loaders, text splitter size allocations, RRF ranking math, and endpoint flows:
 ```bash
